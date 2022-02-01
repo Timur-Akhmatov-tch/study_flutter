@@ -1,93 +1,78 @@
-Container(
-              color: Colors.grey,
-              decoration: BoxDecoration(
-                color: Colors.grey[50]
-              ),
-              child: const Text(
-                'Огромный список лекарств и медикаментов',
-                style: TextStyle(
-                  fontFamily: 'Manrope',
-                  fontSize: 13,
-                ),
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-              ),
-import 'package:flutter/material.dart';
-
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  static const String _title = 'Flutter Code Sample';
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: const MyStatelessWidget(),
-      ),
-    );
-  }
-}
-
-class MyStatelessWidget extends StatelessWidget {
-  const MyStatelessWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          TextButton(
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 20),
-            ),
-            onPressed: null,
-            child: const Text('Disabled'),
-          ),
-          const SizedBox(height: 30),
-          TextButton(
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 20),
-            ),
-            onPressed: () {},
-            child: const Text('Enabled'),
-          ),
-          const SizedBox(height: 30),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: Stack(
-              children: <Widget>[
-                Positioned.fill(
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: <Color>[
-                          Color(0xFF0D47A1),
-                          Color(0xFF1976D2),
-                          Color(0xFF42A5F5),
+SizedBox(
+              height: 200,
+              width: double.infinity,
+              child: GridView.count(
+                primary: false,
+                crossAxisSpacing: 10,
+                scrollDirection: Axis.horizontal,
+                crossAxisCount: 1,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(15),
+                    //color: Colors.grey,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          image: const DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                  'https://pbs.twimg.com/media/Dx1ojeMW0AAJiQg.jpg:large')),
+                          color: Colors.blue[50],
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(width: 2, color: Colors.grey)),
+                      height: 200,
+                      width: 170,
+                      child: Wrap(
+                        alignment: WrapAlignment.center,
+                        runAlignment: WrapAlignment.center,
+                        runSpacing: 20,
+                        children: [
+                          const IconButton(
+                            onPressed: null,
+                            icon: Icon(
+                              Icons.mark_chat_unread_rounded,
+                              size: 25,
+                              color: Colors.purple,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 90,
+                          ),
+                          Container(
+                            width: 140,
+                            //color: Colors.grey,
+                            child: RichText(
+                              text: const TextSpan(
+                                text: 'Чат с формацевтом \n',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Comfortaa',
+                                    fontSize: 15,
+                                    color: Colors.black),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text:
+                                      'Бесплатная консульация со специалистом',
+                                      style:
+                                      TextStyle(fontWeight: FontWeight.normal)),
+                                ],
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),
                   ),
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.all(16.0),
-                    primary: Colors.white,
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {},
-                  child: const Text('Gradient'),
-                ),
-              ],
-            ),
-          ),
+
+                ],
+              )),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('clicked!!!');
+        },
+        child: const Text('Add'),
+        backgroundColor: Colors.green,
       ),
     );
   }
