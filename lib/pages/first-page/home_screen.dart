@@ -30,12 +30,12 @@ class HomeScreen extends StatelessWidget {
         children: [
           const SearchString(),
           SizedBox(
-              height: 200,
+              height: 600,
               width: double.infinity,
               child: GridView.count(
                 // primary: false,
                 // crossAxisSpacing: 10,
-                scrollDirection: Axis.horizontal,
+                //scrollDirection: Axis.horizontal,
                 crossAxisCount: 1,
                 children: <Widget>[
                   Container(
